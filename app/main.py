@@ -64,7 +64,7 @@ class LoginRequest(BaseModel):
 # HOME
 # =========================================================
 
-@app.get("/")
+@app.get("/api")
 def home():
 
     return {
@@ -77,7 +77,7 @@ def home():
 # LOGIN
 # =========================================================
 
-@app.post("/login")
+@app.post("/api/login")
 def login(data: LoginRequest):
 
     db = SessionLocal()
@@ -190,8 +190,7 @@ def get_current_user(
 # =========================================================
 # PROTECTED MEDICAL REPORT
 # =========================================================
-
-@app.get("/reports/{patient_code}")
+@app.get("/api/reports/{patient_code}")
 def get_report(
     patient_code: str,
     current_user: dict = Depends(get_current_user)
